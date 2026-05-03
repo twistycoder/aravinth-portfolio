@@ -44,7 +44,7 @@ export function Hero() {
     <section
       id="hero"
       onMouseMove={handleMouseMove}
-      className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden pt-40 pb-24 lg:pt-32 lg:pb-0 bg-background"
+      className="relative flex min-h-screen w-full flex-col justify-start lg:justify-center overflow-hidden pt-44 pb-24 lg:pt-0 lg:pb-0 bg-background"
     >
       {/* Dynamic Background Glow */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -60,17 +60,17 @@ export function Hero() {
           
           {/* Left Column: Content */}
           <div className="flex flex-col items-start text-left">
-            <div className="space-y-4">
+            <div className="space-y-4 md:space-y-6">
               <motion.span 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-xl font-medium text-muted-foreground/60 tracking-tight"
+                className="text-lg md:text-xl font-medium text-muted-foreground/60 tracking-tight"
               >
                 Hi, I&apos;m
               </motion.span>
-              <h1 className="text-[clamp(3.5rem,8vw,6.5rem)] font-medium tracking-tighter leading-[0.85] flex flex-col">
-                <span className="flex overflow-hidden">
+              <h1 className="text-[clamp(2.25rem,11vw,6.5rem)] font-medium tracking-tighter md:tracking-tight leading-[0.9] flex flex-col max-w-[95vw]">
+                <span className="flex flex-wrap overflow-hidden">
                   {nameWords.map((char, i) => (
                     <motion.span
                       key={i}
@@ -99,7 +99,7 @@ export function Hero() {
               </h1>
             </div>
 
-            <div className="h-12 mt-10 overflow-hidden relative w-full">
+            <div className="h-10 md:h-12 mt-8 md:mt-10 overflow-hidden relative w-full">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={roleIndex}
@@ -107,7 +107,7 @@ export function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.6, ease: "anticipate" }}
-                  className="text-2xl md:text-4xl font-medium text-primary tracking-tight"
+                  className="text-xl md:text-4xl font-medium text-primary tracking-tight"
                 >
                   {ROLES[roleIndex]}
                 </motion.p>
@@ -118,7 +118,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="mt-8 max-w-xl text-lg text-muted-foreground/80 md:text-xl leading-relaxed font-light"
+              className="mt-6 md:mt-8 max-w-xl text-base md:text-xl text-muted-foreground/80 leading-relaxed font-light"
             >
               I craft <span className="text-foreground font-medium italic">scalable React applications</span> with exceptional performance and seamless user experiences.
             </motion.p>
@@ -127,10 +127,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.1 }}
-              className="mt-8 flex flex-wrap gap-3"
+              className="mt-8 flex flex-wrap gap-2 md:gap-3"
             >
               {BADGES.map((badge, idx) => (
-                <div key={idx} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary/30 border border-border/50 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 hover:bg-secondary/50 transition-colors">
+                <div key={idx} className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-xl bg-secondary/30 backdrop-blur-md border border-border/50 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 hover:bg-secondary/50 transition-colors">
                   {badge.icon}
                   {badge.text}
                 </div>
@@ -141,15 +141,15 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="mt-12 flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
+              className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-4 md:gap-5 w-full sm:w-auto"
             >
-              <Button asChild size="lg" className="h-14 px-10 rounded-full group bg-primary text-primary-foreground hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-all">
+              <Button asChild size="lg" className="h-12 md:h-14 px-8 md:px-10 rounded-full group bg-primary text-primary-foreground hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-all">
                 <Link href="#projects">
                   Explore Work
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-14 px-10 rounded-full border-border/60 hover:bg-secondary/50 backdrop-blur-sm">
+              <Button asChild variant="outline" size="lg" className="h-12 md:h-14 px-8 md:px-10 rounded-full border-border/60 hover:bg-secondary/50 backdrop-blur-sm">
                 <Link href="/Aravinth Resume.pdf" target="_blank">
                   Resume
                   <Download className="ml-2 h-4 w-4" />
