@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 const QUICK_CONTACT = [
   { name: "WhatsApp", icon: <FaWhatsapp />, href: "https://wa.me/919788660220", color: "hover:text-[#25D366]" },
   { name: "Email", icon: <FaEnvelope />, href: "mailto:aravintharies@gmail.com", color: "hover:text-primary" },
-  { name: "LinkedIn", icon: <FaLinkedin />, href: "https://www.linkedin.com/in/aravinth-dk", color: "hover:text-[#0A66C2]" },
+  { name: "LinkedIn", icon: <FaLinkedin />, href: "https://www.linkedin.com/in/arvnth", color: "hover:text-[#0A66C2]" },
 ];
 
 export function Contact() {
@@ -30,16 +30,16 @@ export function Contact() {
   return (
     <Section id="contact" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
-      
+
       <div className="mb-12 md:mb-20 space-y-2 md:space-y-4">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase"
         >
           Collaboration
         </motion.span>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-3xl font-medium tracking-tighter sm:text-6xl md:text-7xl"

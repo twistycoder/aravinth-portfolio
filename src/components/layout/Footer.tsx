@@ -57,7 +57,7 @@ export function Footer() {
             <div className="space-y-6">
               <h4 className="text-[10px] font-black tracking-[0.3em] text-foreground/40 uppercase">Digital Ecosystem</h4>
               <div className="flex flex-col gap-4">
-                <Link href="https://www.linkedin.com/in/aravinth-dk" target="_blank" className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-all group/link">
+                <Link href="https://www.linkedin.com/in/arvnth" target="_blank" className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-all group/link">
                   <div className="p-2 rounded-lg bg-secondary/50 group-hover/link:bg-primary/10 transition-colors">
                     <FaLinkedin className="h-4 w-4" />
                   </div>
