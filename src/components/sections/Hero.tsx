@@ -44,7 +44,7 @@ export function Hero() {
     <section
       id="hero"
       onMouseMove={handleMouseMove}
-      className="relative flex min-h-screen w-full flex-col justify-start lg:justify-center overflow-hidden pt-44 pb-24 lg:pt-0 lg:pb-0 bg-background"
+      className="relative flex min-h-screen w-full flex-col justify-start lg:justify-center overflow-hidden pt-32 pb-24 lg:pt-32 lg:pb-32 bg-background"
     >
       {/* Dynamic Background Glow */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -69,8 +69,8 @@ export function Hero() {
               >
                 Hi, I&apos;m
               </motion.span>
-              <h1 className="text-[clamp(2.25rem,11vw,6.5rem)] font-medium tracking-tighter md:tracking-tight leading-[0.9] flex flex-col max-w-[95vw]">
-                <span className="flex flex-wrap overflow-hidden">
+              <h1 className="text-[clamp(2.25rem,8vw,6rem)] font-medium tracking-tighter md:tracking-tight leading-none flex flex-col max-w-[95vw]">
+                <span className="flex flex-nowrap overflow-hidden">
                   {nameWords.map((char, i) => (
                     <motion.span
                       key={i}

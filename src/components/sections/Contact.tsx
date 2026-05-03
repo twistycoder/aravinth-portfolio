@@ -31,7 +31,7 @@ export function Contact() {
     <Section id="contact" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
       
-      <div className="mb-20 space-y-4">
+      <div className="mb-12 md:mb-20 space-y-2 md:space-y-4">
         <motion.span 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -42,13 +42,13 @@ export function Contact() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
+          className="text-3xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
           Get In <span className="text-muted-foreground/60 italic">Touch</span>
         </motion.h2>
       </div>
 
-      <div className="grid gap-16 lg:grid-cols-2 items-start">
+      <div className="grid gap-12 md:gap-16 lg:grid-cols-2 items-start">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -56,10 +56,10 @@ export function Contact() {
           transition={{ duration: 0.5 }}
         >
           <div className="space-y-6 mb-12">
-            <h3 className="text-3xl font-medium tracking-tight text-foreground leading-tight">
+            <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-foreground leading-tight">
               Let&apos;s build something <span className="text-primary italic">impactful together.</span>
             </h3>
-            <p className="text-lg text-muted-foreground/80 leading-relaxed max-w-xl">
+            <p className="text-base md:text-lg text-muted-foreground/80 leading-relaxed max-w-xl">
               I&apos;m currently available for freelance projects and full-time opportunities. If you have an idea or need a reliable React developer, let&apos;s talk.
             </p>
           </div>
@@ -112,7 +112,7 @@ export function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative rounded-[2.5rem] border border-border bg-background/50 p-10 backdrop-blur-md shadow-2xl overflow-hidden"
+          className="relative rounded-3xl md:rounded-[2.5rem] border border-border bg-background/50 p-6 md:p-10 backdrop-blur-md shadow-2xl overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-50" />
           <form onSubmit={handleSubmit} className="relative z-10 space-y-8">

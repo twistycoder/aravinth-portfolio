@@ -64,7 +64,7 @@ export function Experience() {
     <Section id="experience" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
       
-      <div className="mb-20 space-y-4">
+      <div className="mb-12 md:mb-20 space-y-2 md:space-y-4">
         <motion.span 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -75,13 +75,13 @@ export function Experience() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
+          className="text-3xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
           Work <span className="text-muted-foreground/60 italic">History</span>
         </motion.h2>
       </div>
 
-      <div className="relative space-y-16 before:absolute before:inset-0 before:left-0 md:before:left-1/2 before:-translate-x-px before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+      <div className="relative space-y-12 md:space-y-16 before:absolute before:inset-0 before:left-0 md:before:left-1/2 before:-translate-x-px before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
         {EXPERIENCES.map((exp, idx) => (
           <motion.div
             key={idx}
@@ -100,9 +100,9 @@ export function Experience() {
             />
 
             {/* Content Card */}
-            <div className="ml-10 md:ml-0 md:w-[calc(50%-3rem)] p-10 rounded-[2.5rem] border border-border bg-background/50 backdrop-blur-md transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
-              <div className="flex flex-col mb-8 gap-4">
-                <div className="flex items-center justify-between">
+            <div className="ml-8 md:ml-0 md:w-[calc(50%-3rem)] p-6 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-border bg-background/50 backdrop-blur-md transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
+              <div className="flex flex-col mb-6 md:mb-8 gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4">
                   <span className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase font-semibold">
                     {exp.period}
                   </span>
@@ -115,7 +115,7 @@ export function Experience() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-medium text-3xl tracking-tighter mb-1">{exp.role}</h3>
+                  <h3 className="font-medium text-2xl md:text-3xl tracking-tighter mb-1">{exp.role}</h3>
                   <h4 className="text-sm font-medium text-muted-foreground/60 tracking-wide uppercase">
                     {exp.company}
                   </h4>

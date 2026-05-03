@@ -69,7 +69,7 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0], idx: numbe
       transition={{ duration: 0.7, delay: idx * 0.1 }}
       onMouseMove={handleMouseMove}
       className={cn(
-        "group relative flex flex-col rounded-[2.5rem] border border-border bg-background/50 overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5",
+        "group relative flex flex-col rounded-3xl md:rounded-[2.5rem] border border-border bg-background/50 overflow-hidden backdrop-blur-md transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5",
         project.size === "large" ? "lg:col-span-2 lg:flex-row" : "lg:col-span-1"
       )}
     >
@@ -108,13 +108,13 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0], idx: numbe
       </div>
 
       <div className={cn(
-        "p-10 flex flex-col flex-1 z-10",
+        "p-6 md:p-10 flex flex-col flex-1 z-10",
         project.size === "large" ? "lg:w-1/2" : "w-full"
       )}>
         <div className="flex items-start justify-between mb-4">
           <h3 className={cn(
             "font-medium tracking-tighter leading-[1.1]",
-            project.size === "large" ? "text-3xl md:text-4xl" : "text-2xl"
+            project.size === "large" ? "text-2xl md:text-4xl" : "text-xl md:text-2xl"
           )}>
             {project.title}
           </h3>
@@ -143,6 +143,21 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0], idx: numbe
             </span>
           ))}
         </div>
+
+        <div className="flex gap-3 mt-8 lg:hidden">
+          <Button size="sm" className="flex-1 rounded-xl gap-2 h-11 shadow-sm" asChild>
+            <Link href={project.liveUrl} target="_blank">
+              <ExternalLink className="w-4 h-4" />
+              Live Demo
+            </Link>
+          </Button>
+          <Button size="sm" variant="secondary" className="flex-1 rounded-xl gap-2 h-11 shadow-sm" asChild>
+            <Link href={project.githubUrl} target="_blank">
+              <Github className="w-4 h-4" />
+              GitHub
+            </Link>
+          </Button>
+        </div>
       </div>
     </motion.div>
   );
@@ -153,7 +168,7 @@ export function Projects() {
     <Section id="projects" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.2]" />
       
-      <div className="mb-20 space-y-4">
+      <div className="mb-12 md:mb-20 space-y-2 md:space-y-4">
         <motion.span 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -164,7 +179,7 @@ export function Projects() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
+          className="text-3xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
           Featured <span className="text-muted-foreground/60 italic">Projects</span>
         </motion.h2>
