@@ -166,7 +166,7 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
-          Featured <span className="text-muted-foreground/30 italic">Projects</span>
+          Featured <span className="text-muted-foreground/60 italic">Projects</span>
         </motion.h2>
       </div>
 

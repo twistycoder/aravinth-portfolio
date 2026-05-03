@@ -20,7 +20,7 @@ export function Footer() {
         whileHover={{ y: -5, shadow: "0 25px 50px -12px rgba(var(--primary), 0.15)" }}
         transition={{ duration: 0.4, ease: "easeOut" }}
         className={cn(
-          "relative w-full max-w-5xl rounded-[3.5rem] border border-border bg-background/50 backdrop-blur-2xl shadow-2xl p-12 md:p-20 overflow-hidden group/footer",
+          "relative w-full max-w-5xl rounded-[2.5rem] md:rounded-[3.5rem] border border-border bg-background/50 backdrop-blur-2xl shadow-2xl p-8 md:p-20 overflow-hidden group/footer",
           "before:absolute before:inset-0 before:-z-10 before:bg-gradient-to-br before:from-primary/5 before:via-transparent before:to-transparent before:opacity-50"
         )}
       >
@@ -32,7 +32,7 @@ export function Footer() {
             
             <div className="space-y-3">
               <h2 className="text-2xl font-medium tracking-tighter text-foreground">
-                Aravinthkumar <span className="text-muted-foreground/30 italic">Devaraj</span>
+                Aravinthkumar <span className="text-muted-foreground/60 italic">Devaraj</span>
               </h2>
               <p className="text-base text-muted-foreground/80 max-w-sm leading-relaxed">
                 Building scalable, high-performance web applications <span className="text-foreground/90 font-medium">that deliver real business value.</span>
@@ -53,7 +53,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 gap-16 md:gap-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 md:gap-24">
             <div className="space-y-6">
               <h4 className="text-[10px] font-black tracking-[0.3em] text-foreground/40 uppercase">Digital Ecosystem</h4>
               <div className="flex flex-col gap-4">

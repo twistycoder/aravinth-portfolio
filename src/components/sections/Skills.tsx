@@ -79,7 +79,7 @@ export function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
-          Technical <span className="text-muted-foreground/30 italic">Stack</span>
+          Technical <span className="text-muted-foreground/60 italic">Stack</span>
         </motion.h2>
       </div>
 

@@ -24,7 +24,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
-          About <span className="text-muted-foreground/30 italic">Me</span>
+          About <span className="text-muted-foreground/60 italic">Me</span>
         </motion.h2>
       </div>
 

@@ -44,7 +44,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
-          Get In <span className="text-muted-foreground/30 italic">Touch</span>
+          Get In <span className="text-muted-foreground/60 italic">Touch</span>
         </motion.h2>
       </div>
 

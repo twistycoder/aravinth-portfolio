@@ -91,7 +91,7 @@ export function Hero() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, delay: 0.8 }}
-                  className="text-muted-foreground/30 italic relative inline-block group"
+                  className="text-muted-foreground/60 italic relative inline-block group"
                 >
                   Devaraj
                   <div className="absolute -bottom-2 left-0 w-0 h-1 bg-primary/20 transition-all duration-700 group-hover:w-full" />
@@ -210,7 +210,7 @@ export function Hero() {
         transition={{ delay: 2.5, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3"
       >
-        <span className="text-[9px] font-black tracking-[0.4em] text-muted-foreground/30 uppercase">Discover</span>
+        <span className="text-[9px] font-black tracking-[0.4em] text-muted-foreground/60 uppercase">Discover</span>
         <div className="h-16 w-[1px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
       </motion.div>
     </section>

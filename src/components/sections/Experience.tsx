@@ -77,7 +77,7 @@ export function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
-          Work <span className="text-muted-foreground/30 italic">History</span>
+          Work <span className="text-muted-foreground/60 italic">History</span>
         </motion.h2>
       </div>
 
@@ -141,7 +141,7 @@ export function Experience() {
 
               {/* Tech Stack Footer */}
               <div className="pt-6 border-t border-border/50 flex flex-wrap gap-2">
-                <span className="text-[10px] text-muted-foreground/40 uppercase tracking-widest w-full mb-1">Stack:</span>
+                <span className="text-[10px] text-muted-foreground/60 uppercase tracking-widest w-full mb-1">Stack:</span>
                 {exp.tech.map((t) => (
                   <span key={t} className="text-[10px] font-medium text-muted-foreground/70 px-2 py-1 bg-secondary/30 rounded-md">
                     {t}
