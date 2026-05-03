@@ -14,9 +14,21 @@ export function Hero() {
     >
       {/* Background Gradients & Animated Blobs */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-primary/10 rounded-full mix-blend-normal filter blur-3xl opacity-50 animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-secondary-foreground/10 rounded-full mix-blend-normal filter blur-3xl opacity-50 animate-blob" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute -bottom-8 left-1/2 w-64 h-64 md:w-96 md:h-96 bg-muted-foreground/10 rounded-full mix-blend-normal filter blur-3xl opacity-50 animate-blob" style={{ animationDelay: "4s" }}></div>
+        <motion.div 
+          animate={{ x: [0, 250, -150, 0], y: [0, -200, 150, 0], scale: [1, 1.3, 0.8, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-72 h-72 md:w-[32rem] md:h-[32rem] bg-primary/20 rounded-full mix-blend-normal filter blur-[100px] opacity-70" 
+        />
+        <motion.div 
+          animate={{ x: [0, -250, 150, 0], y: [0, 200, -150, 0], scale: [1, 1.2, 0.9, 1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-1/3 right-1/4 w-72 h-72 md:w-[32rem] md:h-[32rem] bg-accent/30 rounded-full mix-blend-normal filter blur-[100px] opacity-70" 
+        />
+        <motion.div 
+          animate={{ x: [0, 150, -200, 0], y: [0, -150, 250, 0], scale: [1, 1.4, 0.8, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-8 left-1/2 w-72 h-72 md:w-[32rem] md:h-[32rem] bg-muted-foreground/20 rounded-full mix-blend-normal filter blur-[100px] opacity-70" 
+        />
       </div>
 
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center px-6 md:px-12">
