@@ -62,7 +62,7 @@ export function Services() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="group relative rounded-[2.5rem] border border-border bg-background/50 p-10 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl overflow-hidden"
+            className="group relative rounded-3xl md:rounded-[2.5rem] border border-border bg-background/50 p-6 md:p-10 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
@@ -72,8 +72,8 @@ export function Services() {
               </div>
               
               <div className="space-y-4">
-                <h3 className="text-2xl font-medium tracking-tight">{service.title}</h3>
-                <p className="text-base text-muted-foreground/80 leading-relaxed max-w-md">
+                <h3 className="text-xl md:text-2xl font-medium tracking-tight">{service.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed max-w-md">
                   {service.description}
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2">

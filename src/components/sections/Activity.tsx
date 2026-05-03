@@ -36,14 +36,14 @@ export function Activity() {
           </motion.h2>
         </div>
 
-        <div className="flex items-center gap-4 px-6 py-4 rounded-3xl bg-background border border-border shadow-xl">
-          <div className="relative h-3 w-3">
+        <div className="flex items-center gap-4 px-5 py-3 rounded-2xl bg-background border border-border shadow-xl">
+          <div className="relative h-2.5 w-2.5">
             <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-75" />
-            <div className="relative h-3 w-3 bg-primary rounded-full" />
+            <div className="relative h-2.5 w-2.5 bg-primary rounded-full" />
           </div>
           <div className="space-y-0.5">
-            <p className="text-[10px] font-black tracking-widest text-muted-foreground uppercase">Live Status</p>
-            <p className="text-sm font-bold">Currently Architecting Portfolios</p>
+            <p className="text-[9px] font-black tracking-widest text-muted-foreground uppercase">Live Status</p>
+            <p className="text-xs md:text-sm font-bold">Currently Architecting Portfolios</p>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ export function Activity() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="group p-8 rounded-3xl border border-border bg-background/50 backdrop-blur-md hover:border-primary/20 hover:shadow-xl transition-all"
+            className="group p-6 md:p-8 rounded-3xl border border-border bg-background/50 backdrop-blur-md hover:border-primary/20 hover:shadow-xl transition-all"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 rounded-xl bg-primary/5 text-primary border border-primary/10">
@@ -70,7 +70,7 @@ export function Activity() {
                 Live
               </motion.div>
             </div>
-            <p className="text-4xl font-bold tracking-tighter mb-2 group-hover:text-primary transition-colors">
+            <p className="text-3xl md:text-4xl font-bold tracking-tighter mb-2 group-hover:text-primary transition-colors">
               {stat.value}
             </p>
             <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
