@@ -17,7 +17,7 @@ export function Footer() {
       
       {/* Floating Card Footer */}
       <motion.div 
-        whileHover={{ y: -5, shadow: "0 25px 50px -12px rgba(var(--primary), 0.15)" }}
+        whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(var(--primary), 0.15)" }}
         transition={{ duration: 0.4, ease: "easeOut" }}
         className={cn(
           "relative w-full max-w-5xl rounded-[2.5rem] md:rounded-[3.5rem] border border-border bg-background/50 backdrop-blur-2xl shadow-2xl p-8 md:p-20 overflow-hidden group/footer",
