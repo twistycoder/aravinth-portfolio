@@ -66,7 +66,7 @@ export function Skills() {
     <Section id="skills" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
       
-      <div className="mb-20 space-y-4">
+      <div className="mb-12 md:mb-20 space-y-2 md:space-y-4">
         <motion.span 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -77,14 +77,14 @@ export function Skills() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
+          className="text-3xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
         >
           Technical <span className="text-muted-foreground/60 italic">Stack</span>
         </motion.h2>
       </div>
 
       {/* Core Stack Highlight */}
-      <div className="mb-16">
+      <div className="mb-12 md:mb-16">
         <h3 className="text-sm font-medium tracking-widest text-muted-foreground uppercase mb-8 ml-1">
           Core Technologies
         </h3>
@@ -96,7 +96,7 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group relative flex items-center justify-between rounded-[2rem] border border-border bg-background/50 p-6 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 overflow-hidden"
+              className="group relative flex items-center justify-between rounded-3xl md:rounded-[2rem] border border-border bg-background/50 p-5 md:p-6 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="flex items-center gap-4 z-10">
@@ -122,7 +122,7 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="group relative rounded-[2rem] border border-border bg-background/40 p-8 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:bg-background/60"
+            className="group relative rounded-3xl md:rounded-[2rem] border border-border bg-background/40 p-6 md:p-8 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:bg-background/60"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/5 text-primary border border-primary/10">
