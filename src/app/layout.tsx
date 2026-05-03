@@ -41,6 +41,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="noise" />
+          <div className="fixed inset-0 -z-10 grid-pattern opacity-[0.4] dark:opacity-[0.2]" />
           {children}
         </ThemeProvider>
       </body>

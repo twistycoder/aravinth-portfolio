@@ -50,39 +50,69 @@ const EXPERIENCES = [
   },
 ];
 
+import { motion } from "framer-motion";
+
 export function Experience() {
   return (
-    <Section id="experience">
-      <div className="mb-12">
-        <h2 className="text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">Experience</h2>
-        <div className="mt-2 h-1 w-20 bg-primary rounded"></div>
+    <Section id="experience" className="relative">
+      <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
+      
+      <div className="mb-20 space-y-4">
+        <motion.span 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase"
+        >
+          Career Path
+        </motion.span>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
+        >
+          Work <span className="text-muted-foreground/30 italic">History</span>
+        </motion.h2>
       </div>
 
-      <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+      <div className="relative space-y-12 before:absolute before:inset-0 before:left-0 md:before:left-1/2 before:-translate-x-px before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
         {EXPERIENCES.map((exp, idx) => (
-          <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-            
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 text-primary">
-              <Briefcase className="w-5 h-5" />
-            </div>
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            className="relative flex items-start md:odd:flex-row-reverse group"
+          >
+            {/* Dot */}
+            <div className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 flex items-center justify-center w-3 h-3 rounded-full border border-border bg-background z-10 transition-colors group-hover:bg-primary" />
 
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-xl border border-border bg-background shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
-                <h3 className="font-medium text-xl">{exp.role}</h3>
-                <span className="text-xs font-medium px-2.5 py-1 bg-primary/10 text-primary rounded-full w-fit">
-                  {exp.period}
-                </span>
+            {/* Content Card */}
+            <div className="ml-8 md:ml-0 md:w-[calc(50%-2.5rem)] p-8 rounded-3xl border border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5">
+              <div className="flex flex-col mb-6 gap-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] tracking-widest text-muted-foreground uppercase">
+                    {exp.period}
+                  </span>
+                  <span className="text-[10px] tracking-widest text-primary/60 uppercase bg-primary/5 px-2 py-0.5 rounded-full border border-primary/10">
+                    Full Time
+                  </span>
+                </div>
+                <h3 className="font-medium text-2xl tracking-tight">{exp.role}</h3>
+                <h4 className="text-sm font-medium text-muted-foreground">
+                  {exp.company}
+                </h4>
               </div>
-              <h4 className="text-sm font-semibold text-muted-foreground mb-4">
-                {exp.company}
-              </h4>
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-outside ml-4 marker:text-border">
+              <ul className="space-y-3">
                 {exp.description.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <li key={i} className="flex items-start text-sm text-muted-foreground/80 leading-relaxed">
+                    <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-border shrink-0" />
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </Section>

@@ -4,59 +4,95 @@ import * as React from "react";
 import { Section } from "@/components/ui/Section";
 import { Code2, Layout, Database } from "lucide-react";
 
+import { motion } from "framer-motion";
+
 export function About() {
   return (
-    <Section id="about">
-      <div className="mb-12">
-        <h2 className="text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">About Me</h2>
-        <div className="mt-2 h-1 w-20 bg-primary rounded"></div>
+    <Section id="about" className="relative">
+      <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
+      
+      <div className="mb-20 space-y-4">
+        <motion.span 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase"
+        >
+          Overview
+        </motion.span>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
+        >
+          About <span className="text-muted-foreground/30 italic">Me</span>
+        </motion.h2>
       </div>
 
-      <div className="grid gap-12 lg:grid-cols-2">
-        <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-          <p>
-            I am an experienced React Developer with hands-on expertise in building dynamic websites. As a rational developer, I am passionate about creating and designing user-friendly sites that deliver exceptional interactivity and seamless experiences.
+      <div className="grid gap-16 lg:grid-cols-5">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="lg:col-span-3 space-y-8 text-lg text-muted-foreground/80 leading-relaxed"
+        >
+          <p className="text-xl text-foreground font-medium tracking-tight">
+            I am a Senior React Developer passionate about crafting digital experiences that are as functional as they are beautiful.
           </p>
           <p>
-            Over the past 5+ years, I have honed my skills in User Interface Design and Front-End Development, consistently delivering intuitive and user-centric web applications. I also bring additional expertise in Backend Development, enabling me to build comprehensive full-stack solutions.
+            With over 5 years of experience in the industry, I specialized in building high-performance web applications using modern technologies like React, Next.js, and Node.js. My approach combines technical excellence with a deep understanding of user behavior.
           </p>
           <p>
-            My diverse skill set is complemented by extensive exposure to startup environments, which has fostered my adaptability, innovative thinking, and ability to thrive in fast-paced settings.
+            My journey through various startups has taught me the importance of agility and innovative thinking. I don&apos;t just write code; I build solutions that drive business growth and user satisfaction.
           </p>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-          <div className="rounded-xl border border-border bg-background p-6 shadow-sm">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <Layout className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 font-semibold">Front-End Dev</h3>
-            <p className="text-sm text-muted-foreground">
-              Expert in React, Next.js, and modern CSS frameworks like Tailwind CSS, building responsive and accessible interfaces.
-            </p>
-          </div>
-
-          <div className="rounded-xl border border-border bg-background p-6 shadow-sm">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <Code2 className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 font-semibold">Architecture</h3>
-            <p className="text-sm text-muted-foreground">
-              Strong grasp of state management (Redux, Flux) and API integrations (Axios, REST, GraphQL).
-            </p>
-          </div>
-
-          <div className="rounded-xl border border-border bg-background p-6 shadow-sm sm:col-span-2 lg:col-span-1 xl:col-span-2 flex flex-col sm:flex-row items-start gap-4">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
-              <Database className="h-6 w-6" />
+          
+          <div className="pt-8 grid grid-cols-2 md:grid-cols-3 gap-8">
+            <div>
+              <p className="text-3xl font-medium tracking-tighter text-foreground">5+</p>
+              <p className="text-[10px] tracking-widest text-muted-foreground uppercase mt-2">Years Exp</p>
             </div>
             <div>
-              <h3 className="mb-2 font-semibold">Full-Stack Capabilities</h3>
-              <p className="text-sm text-muted-foreground">
-                Proficient in Node.js and MySQL, developing API contracts and ensuring efficient communication between frontend and backend systems.
-              </p>
+              <p className="text-3xl font-medium tracking-tighter text-foreground">50+</p>
+              <p className="text-[10px] tracking-widest text-muted-foreground uppercase mt-2">Projects</p>
+            </div>
+            <div>
+              <p className="text-3xl font-medium tracking-tighter text-foreground">10+</p>
+              <p className="text-[10px] tracking-widest text-muted-foreground uppercase mt-2">Happy Clients</p>
             </div>
           </div>
+        </motion.div>
+
+        <div className="lg:col-span-2 grid gap-4">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="group relative rounded-3xl border border-border bg-background/50 p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-xl"
+          >
+            <div className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5 text-primary border border-primary/10">
+              <Layout className="h-5 w-5" />
+            </div>
+            <h3 className="mb-3 text-lg font-medium tracking-tight">Front-End Engineering</h3>
+            <p className="text-sm text-muted-foreground/80 leading-relaxed">
+              Crafting pixel-perfect, responsive interfaces using React and Next.js with a focus on performance.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="group relative rounded-3xl border border-border bg-background/50 p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-xl"
+          >
+            <div className="mb-6 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5 text-primary border border-primary/10">
+              <Code2 className="h-5 w-5" />
+            </div>
+            <h3 className="mb-3 text-lg font-medium tracking-tight">Technical Architecture</h3>
+            <p className="text-sm text-muted-foreground/80 leading-relaxed">
+              Designing scalable systems and state management patterns that stand the test of time.
+            </p>
+          </motion.div>
         </div>
       </div>
     </Section>

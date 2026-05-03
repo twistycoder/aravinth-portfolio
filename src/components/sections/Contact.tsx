@@ -5,13 +5,14 @@ import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Send, MapPin, Phone, Mail } from "lucide-react";
 
+import { motion } from "framer-motion";
+
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       alert("Message sent successfully! (Simulated)");
@@ -19,87 +20,114 @@ export function Contact() {
   };
 
   return (
-    <Section id="contact">
-      <div className="mb-12">
-        <h2 className="text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">Get In Touch</h2>
-        <div className="mt-2 h-1 w-20 bg-primary rounded"></div>
+    <Section id="contact" className="relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
+      
+      <div className="mb-20 space-y-4">
+        <motion.span 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase"
+        >
+          Collaboration
+        </motion.span>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
+        >
+          Get In <span className="text-muted-foreground/30 italic">Touch</span>
+        </motion.h2>
       </div>
 
-      <div className="grid gap-12 lg:grid-cols-2">
-        <div>
-          <p className="text-lg text-muted-foreground mb-8">
-            I&apos;m currently available for new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
+      <div className="grid gap-16 lg:grid-cols-2 items-start">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-xl text-muted-foreground/80 leading-relaxed mb-12">
+            Have a project in mind or just want to say hello? I&apos;m always open to discussing new opportunities and creative ideas.
           </p>
 
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <MapPin className="h-5 w-5" />
+          <div className="space-y-8">
+            <div className="flex items-center gap-6">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary border border-primary/10">
+                <MapPin className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-medium">Location</h4>
-                <p className="text-sm text-muted-foreground">Coimbatore, Tamil Nadu 641006</p>
+                <h4 className="text-sm font-medium tracking-widest text-muted-foreground uppercase mb-1">Location</h4>
+                <p className="text-lg font-medium">Coimbatore, Tamil Nadu</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Phone className="h-5 w-5" />
+            <div className="flex items-center gap-6">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary border border-primary/10">
+                <Mail className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-medium">Phone</h4>
-                <p className="text-sm text-muted-foreground">+91 9788660220</p>
+                <h4 className="text-sm font-medium tracking-widest text-muted-foreground uppercase mb-1">Email</h4>
+                <p className="text-lg font-medium">aravintharies@gmail.com</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Mail className="h-5 w-5" />
+            <div className="flex items-center gap-6">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary border border-primary/10">
+                <Phone className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-medium">Email</h4>
-                <p className="text-sm text-muted-foreground">aravintharies@gmail.com</p>
+                <h4 className="text-sm font-medium tracking-widest text-muted-foreground uppercase mb-1">Phone</h4>
+                <p className="text-lg font-medium">+91 9788660220</p>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="rounded-2xl border border-border bg-background p-8 shadow-sm">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium">Name</label>
-              <input
-                id="name"
-                required
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="John Doe"
-              />
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-[2.5rem] border border-border bg-background/50 p-10 backdrop-blur-sm shadow-2xl"
+        >
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="space-y-3">
+                <label htmlFor="name" className="text-xs font-medium tracking-widest text-muted-foreground uppercase">Name</label>
+                <input
+                  id="name"
+                  required
+                  className="w-full bg-transparent border-b border-border py-2 focus:border-primary outline-none transition-colors"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div className="space-y-3">
+                <label htmlFor="email" className="text-xs font-medium tracking-widest text-muted-foreground uppercase">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  className="w-full bg-transparent border-b border-border py-2 focus:border-primary outline-none transition-colors"
+                  placeholder="john@example.com"
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
-              <input
-                id="email"
-                type="email"
-                required
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="john@example.com"
-              />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium">Message</label>
+            <div className="space-y-3">
+              <label htmlFor="message" className="text-xs font-medium tracking-widest text-muted-foreground uppercase">Message</label>
               <textarea
                 id="message"
                 required
-                className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-y"
-                placeholder="Let's work together..."
+                className="w-full bg-transparent border-b border-border py-2 focus:border-primary outline-none transition-colors min-h-[100px] resize-none"
+                placeholder="Let's build something great..."
               />
             </div>
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Send Message"}
-              <Send className="ml-2 h-4 w-4" />
+            <Button type="submit" className="w-full h-14 rounded-full text-lg" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Inquiry"}
+              <Send className="ml-3 h-5 w-5" />
             </Button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
