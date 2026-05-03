@@ -9,7 +9,7 @@ import { SiNextdotjs, SiTypescript, SiRedux, SiMongodb, SiTailwindcss, SiExpress
 
 const CORE_STACK = [
   { name: "React.js", icon: <FaReact />, level: 5, color: "text-[#61DAFB]" },
-  { name: "Next.js", icon: <SiNextdotjs />, level: 5, color: "text-white" },
+  { name: "Next.js", icon: <SiNextdotjs />, level: 5, color: "text-foreground" },
   { name: "JavaScript", icon: <FaJs />, level: 4.5, color: "text-[#F7DF1E]" },
   { name: "TypeScript", icon: <SiTypescript />, level: 4, color: "text-[#3178C6]" },
 ];
