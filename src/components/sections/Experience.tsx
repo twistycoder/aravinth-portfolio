@@ -2,59 +2,66 @@
 
 import * as React from "react";
 import { Section } from "@/components/ui/Section";
-import { Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const EXPERIENCES = [
   {
-    role: "React Developer",
+    role: "Senior React Developer",
     company: "P2P IT Solutions",
     period: "Jan 2022 - April 2025",
+    tech: ["React", "Ant Design", "E-Charts", "Material-UI"],
+    achievement: "Optimized dashboard data visualization for healthcare metrics",
     description: [
-      "Designed and implemented efficient user interfaces for file uploads using React and Ant Design Uploader, optimizing the user experience for seamless file management.",
-      "Implemented React E-Charts to visually summarize data for IP (Inpatient) and OP (Outpatient) providing insightful and interactive data visualization.",
-      "Utilized Material-UI Table to calculate and display the status of insurance claims, enhancing data clarity and interaction.",
-      "Refactored legacy code to align with modern development standards, enhancing functionality, maintainability, and performance.",
+      "Architected interactive dashboards using React E-Charts, significantly improving data visibility for IP and OP healthcare metrics.",
+      "Engineered high-performance file management systems with Ant Design, streamlining user workflows for seamless document handling.",
+      "Modernized legacy insurance claim systems with Material-UI, enhancing data clarity and interaction efficiency.",
+      "Refactored mission-critical codebase to modern standards, improving overall system performance and long-term maintainability.",
     ],
   },
   {
-    role: "React Developer",
+    role: "Frontend Engineer",
     company: "Integraate Innovations Private Limited",
     period: "Jan 2021 - Dec 2021",
+    tech: ["Next.js", "Redux", "High-charts", "REST APIs"],
+    achievement: "Delivered end-to-end UI for a Document Intelligence platform",
     description: [
-      "Developed a complete front-end framework for a Document Intelligence platform.",
-      "Implemented end-to-end API integration to efficiently extract and analyze data, and provided real-time insights through an interactive React dashboard.",
-      "Developed Redux modules and aggregate tables/grids to create a comparison table.",
-      "Implemented High-charts for interactive dashboard and analysis modules.",
+      "Led the frontend development of a Document Intelligence platform, transforming complex data into actionable real-time insights.",
+      "Integrated sophisticated API architectures for high-speed data extraction and visualization on interactive dashboards.",
+      "Developed robust Redux state management patterns for complex data comparison modules and aggregate grids.",
+      "Implemented dynamic analytics modules using High-charts to drive data-led business decisions.",
     ],
   },
   {
     role: "React Developer",
     company: "Prizm IT Technology",
     period: "April 2018 - Nov 2020",
+    tech: ["React", "Flux", "Ag-Grid", "High-charts"],
+    achievement: "Specialized in advanced UI modules for the Insurance industry",
     description: [
-      "End-to-end React development experience, specializing in full-fledged UI application development with advanced modules tailored for the insurance industry.",
-      "Integrated High-charts with combination bar, spline, pie, and donut charts to create dynamic and interactive data visualizations.",
-      "Implemented Flux architecture in React components to manage state.",
-      "Implemented Ag-Grid tables in React for dynamic data management and integrated React forms.",
+      "Engineered specialized UI modules for the insurance sector, focusing on complex data entry and validation workflows.",
+      "Integrated multi-dimensional data visualizations using combination charts to simplify financial reporting.",
+      "Managed application state using Flux architecture, ensuring predictable data flow across large-scale components.",
+      "Optimized dynamic data management using Ag-Grid, improving record-handling efficiency for insurance data.",
     ],
   },
   {
     role: "UI Website Developer",
     company: "CODOTVU",
     period: "April 2017 - Nov 2018",
+    tech: ["JavaScript", "React.js", "AJAX", "RESTful APIs"],
+    achievement: "Built secure authentication and client-side validation frameworks",
     description: [
-      "Developed authentication and authorization functionalities including Sign Up, Login, and Change Password features using React.js.",
-      "Designed and integrated various client-side validation controls to ensure data accuracy.",
-      "Contributed to writing application-level code to interact with APIs and RESTful web services using AJAX and JSON.",
+      "Developed secure authentication systems (OAuth/SSO) and client-side validation frameworks using React.js.",
+      "Crafted high-performance application-level code to interact with complex RESTful web services.",
+      "Optimized client-side data handling using AJAX and JSON, reducing latency for dynamic content loading.",
     ],
   },
 ];
 
-import { motion } from "framer-motion";
-
 export function Experience() {
   return (
-    <Section id="experience" className="relative">
+    <Section id="experience" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
       
       <div className="mb-20 space-y-4">
@@ -74,43 +81,73 @@ export function Experience() {
         </motion.h2>
       </div>
 
-      <div className="relative space-y-12 before:absolute before:inset-0 before:left-0 md:before:left-1/2 before:-translate-x-px before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+      <div className="relative space-y-16 before:absolute before:inset-0 before:left-0 md:before:left-1/2 before:-translate-x-px before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
         {EXPERIENCES.map((exp, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: idx * 0.1 }}
             className="relative flex items-start md:odd:flex-row-reverse group"
           >
             {/* Dot */}
-            <div className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 flex items-center justify-center w-3 h-3 rounded-full border border-border bg-background z-10 transition-colors group-hover:bg-primary" />
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 flex items-center justify-center w-3 h-3 rounded-full border border-primary/20 bg-background z-10 transition-colors group-hover:bg-primary shadow-[0_0_10px_rgba(var(--primary),0.3)]" 
+            />
 
             {/* Content Card */}
-            <div className="ml-8 md:ml-0 md:w-[calc(50%-2.5rem)] p-8 rounded-3xl border border-border bg-background/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5">
-              <div className="flex flex-col mb-6 gap-3">
+            <div className="ml-10 md:ml-0 md:w-[calc(50%-3rem)] p-10 rounded-[2.5rem] border border-border bg-background/50 backdrop-blur-md transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
+              <div className="flex flex-col mb-8 gap-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] tracking-widest text-muted-foreground uppercase">
+                  <span className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase font-semibold">
                     {exp.period}
                   </span>
-                  <span className="text-[10px] tracking-widest text-primary/60 uppercase bg-primary/5 px-2 py-0.5 rounded-full border border-primary/10">
-                    Full Time
-                  </span>
+                  <div className="flex gap-2">
+                    {exp.tech.slice(0, 2).map((t) => (
+                      <span key={t} className="text-[10px] tracking-widest text-primary/60 uppercase bg-primary/5 px-2 py-0.5 rounded-full border border-primary/10">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="font-medium text-2xl tracking-tight">{exp.role}</h3>
-                <h4 className="text-sm font-medium text-muted-foreground">
-                  {exp.company}
-                </h4>
+                <div>
+                  <h3 className="font-medium text-3xl tracking-tighter mb-1">{exp.role}</h3>
+                  <h4 className="text-sm font-medium text-muted-foreground/60 tracking-wide uppercase">
+                    {exp.company}
+                  </h4>
+                </div>
               </div>
-              <ul className="space-y-3">
+
+              {/* Achievement Highlight */}
+              <div className="mb-8 p-4 rounded-2xl bg-primary/5 border border-primary/10">
+                <p className="text-xs font-medium text-primary leading-tight">
+                  <span className="opacity-50 uppercase tracking-widest mr-2">Key Highlight:</span>
+                  {exp.achievement}
+                </p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
                 {exp.description.map((item, i) => (
-                  <li key={i} className="flex items-start text-sm text-muted-foreground/80 leading-relaxed">
-                    <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-border shrink-0" />
+                  <li key={i} className="flex items-start text-sm text-foreground/70 leading-relaxed group/item">
+                    <span className="mr-3 mt-2 h-1 w-1 rounded-full bg-primary/30 shrink-0 group-hover/item:bg-primary transition-colors" />
                     {item}
                   </li>
                 ))}
               </ul>
+
+              {/* Tech Stack Footer */}
+              <div className="pt-6 border-t border-border/50 flex flex-wrap gap-2">
+                <span className="text-[10px] text-muted-foreground/40 uppercase tracking-widest w-full mb-1">Stack:</span>
+                {exp.tech.map((t) => (
+                  <span key={t} className="text-[10px] font-medium text-muted-foreground/70 px-2 py-1 bg-secondary/30 rounded-md">
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         ))}
