@@ -27,7 +27,7 @@ const PROJECTS = [
   {
     title: "BMTrust",
     description: "A platform for Bharath Mithran Socio Economic Development Trust, dedicated to empowering communities through education and healthcare.",
-    image: "https://images.unsplash.com/photo-1593113580436-d70313361421?q=80&w=2100&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
     tech: ["React", "UI/UX", "Responsive Design"],
     liveUrl: "https://www.bmtrust.in/",
     githubUrl: "#",
@@ -46,7 +46,7 @@ export function Projects() {
   return (
     <Section id="projects" className="bg-secondary/30">
       <div className="mb-12">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Projects</h2>
+        <h2 className="text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">Featured Projects</h2>
         <div className="mt-2 h-1 w-20 bg-primary rounded"></div>
       </div>
 
@@ -78,7 +78,7 @@ export function Projects() {
               </div>
             </div>
             <div className="p-6 flex flex-col flex-1">
-              <h3 className="font-bold text-xl mb-2">{project.title}</h3>
+              <h3 className="font-medium text-2xl mb-2">{project.title}</h3>
               <p className="text-sm text-muted-foreground mb-4 flex-1">
                 {project.description}
               </p>

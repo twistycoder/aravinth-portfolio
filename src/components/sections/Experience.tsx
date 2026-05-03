@@ -54,7 +54,7 @@ export function Experience() {
   return (
     <Section id="experience">
       <div className="mb-12">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Experience</h2>
+        <h2 className="text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">Experience</h2>
         <div className="mt-2 h-1 w-20 bg-primary rounded"></div>
       </div>
 
@@ -68,7 +68,7 @@ export function Experience() {
 
             <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-xl border border-border bg-background shadow-sm hover:shadow-md transition-shadow">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
-                <h3 className="font-bold text-lg">{exp.role}</h3>
+                <h3 className="font-medium text-xl">{exp.role}</h3>
                 <span className="text-xs font-medium px-2.5 py-1 bg-primary/10 text-primary rounded-full w-fit">
                   {exp.period}
                 </span>

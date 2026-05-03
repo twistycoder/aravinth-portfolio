@@ -8,7 +8,7 @@ export function About() {
   return (
     <Section id="about">
       <div className="mb-12">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
+        <h2 className="text-4xl font-medium tracking-tight sm:text-5xl md:text-6xl">About Me</h2>
         <div className="mt-2 h-1 w-20 bg-primary rounded"></div>
       </div>
 
