@@ -14,9 +14,9 @@ export function Footer() {
   return (
     <footer className="relative py-24 px-6 overflow-hidden flex flex-col items-center">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.05]" />
-      
+
       {/* Floating Card Footer */}
-      <motion.div 
+      <motion.div
         whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(var(--primary), 0.15)" }}
         transition={{ duration: 0.4, ease: "easeOut" }}
         className={cn(
@@ -29,7 +29,7 @@ export function Footer() {
             <Link href="#" className="inline-block hover:opacity-80 transition-all hover:scale-105 active:scale-95">
               <Image src="/logo.png" alt="Logo" width={140} height={36} className="h-8 w-auto object-contain dark:invert" />
             </Link>
-            
+
             <div className="space-y-3">
               <h2 className="text-2xl font-medium tracking-tighter text-foreground">
                 Aravinthkumar <span className="text-muted-foreground/60 italic">Devaraj</span>
@@ -38,13 +38,13 @@ export function Footer() {
                 Building scalable, high-performance web applications <span className="text-foreground/90 font-medium">that deliver real business value.</span>
               </p>
             </div>
-            
+
             <div className="flex flex-wrap items-center gap-4">
               <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-bold tracking-[0.2em] text-primary uppercase shadow-sm">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(var(--primary),0.8)]" />
                 Open to new opportunities
               </div>
-              <Link 
+              <Link
                 href="mailto:aravintharies@gmail.com"
                 className="text-[10px] font-bold tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 group/cta"
               >
@@ -67,7 +67,7 @@ export function Footer() {
                   </span>
                   <ArrowUpRight className="h-3 w-3 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
                 </Link>
-                <Link href="https://github.com/twitycoder" target="_blank" className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-all group/link">
+                <Link href="https://github.com/twistycoder" target="_blank" className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-all group/link">
                   <div className="p-2 rounded-lg bg-secondary/50 group-hover/link:bg-primary/10 transition-colors">
                     <FaGithub className="h-4 w-4" />
                   </div>
@@ -104,9 +104,9 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-10 text-[10px] tracking-[0.2em] uppercase font-bold">
             {["About", "Works", "Contact"].map((item) => (
-              <Link 
-                key={item} 
-                href={`#${item.toLowerCase()}`} 
+              <Link
+                key={item}
+                href={`#${item.toLowerCase()}`}
                 className="relative py-1 group/nav transition-colors hover:text-foreground"
               >
                 {item}

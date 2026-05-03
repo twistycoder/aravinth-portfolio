@@ -16,7 +16,7 @@ const PROJECTS = [
     image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
     tech: ["React", "UI/UX", "Responsive Design"],
     liveUrl: "https://www.bmtrust.in/",
-    githubUrl: "https://github.com/twitycoder",
+    githubUrl: "https://github.com/twistycoder",
     highlights: [
       "Improved mobile conversion rates by 25% through responsive design",
       "Integrated secure donation and transparency modules",
@@ -29,7 +29,7 @@ const PROJECTS = [
     image: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?q=80&w=2100&auto=format&fit=crop",
     tech: ["React.js", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://www.lyseliquids.in/",
-    githubUrl: "https://github.com/twitycoder",
+    githubUrl: "https://github.com/twistycoder",
     highlights: [
       "Designed advanced interaction patterns with Framer Motion",
       "Developed a custom design system for consistent branding",
@@ -42,7 +42,7 @@ const PROJECTS = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
     tech: ["Next.js", "React", "Tailwind CSS", "SEO"],
     liveUrl: "https://webdipo.in/",
-    githubUrl: "https://github.com/twitycoder",
+    githubUrl: "https://github.com/twistycoder",
     highlights: [
       "Achieved 95+ Lighthouse scores across all performance metrics",
       "Engineered automated SEO pipelines for dynamic content",
@@ -73,12 +73,12 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0], idx: numbe
         project.size === "large" ? "lg:col-span-2 lg:flex-row" : "lg:col-span-1"
       )}
     >
-      <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
-           style={{ 
-             background: `radial-gradient(800px circle at ${mouseX.get()}px ${mouseY.get()}px, rgba(var(--primary), 0.15), transparent 40%)` 
-           }} 
+      <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          background: `radial-gradient(800px circle at ${mouseX.get()}px ${mouseY.get()}px, rgba(var(--primary), 0.15), transparent 40%)`
+        }}
       />
-      
+
       <div className={cn(
         "relative overflow-hidden bg-muted",
         project.size === "large" ? "h-64 lg:h-auto lg:w-1/2" : "h-60 w-full"
@@ -120,7 +120,7 @@ function ProjectCard({ project, idx }: { project: typeof PROJECTS[0], idx: numbe
           </h3>
           <span className="text-[10px] tracking-widest text-muted-foreground uppercase mt-2 font-mono">0{idx + 1}</span>
         </div>
-        
+
         <p className="text-sm text-muted-foreground/80 leading-relaxed mb-6">
           {project.description}
         </p>
@@ -167,16 +167,16 @@ export function Projects() {
   return (
     <Section id="projects" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.2]" />
-      
+
       <div className="mb-12 md:mb-20 space-y-2 md:space-y-4">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase"
         >
           Selected Works
         </motion.span>
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-3xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
