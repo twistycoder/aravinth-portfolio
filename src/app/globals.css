@@ -25,10 +25,12 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
 }
 
 @layer base {
   :root {
+
     --background: #ffffff;
     --foreground: #0f172a;
 
@@ -81,4 +83,15 @@
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+.animate-blob {
+  animation: blob 10s infinite alternate ease-in-out;
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(50px, -50px) scale(1.1); }
+  66% { transform: translate(-40px, 40px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }
