@@ -62,7 +62,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <p className="text-5xl md:text-6xl font-medium tracking-tighter text-primary">5+</p>
+              <p className="text-3xl md:text-6xl font-medium tracking-tighter text-primary">5+</p>
               <p className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase mt-3 font-semibold">Years Exp</p>
             </motion.div>
             <motion.div
@@ -71,7 +71,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <p className="text-5xl md:text-6xl font-medium tracking-tighter text-primary">50+</p>
+              <p className="text-3xl md:text-6xl font-medium tracking-tighter text-primary">50+</p>
               <p className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase mt-3 font-semibold">Projects</p>
             </motion.div>
             <motion.div
@@ -80,7 +80,7 @@ export function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <p className="text-5xl md:text-6xl font-medium tracking-tighter text-primary">10+</p>
+              <p className="text-3xl md:text-6xl font-medium tracking-tighter text-primary">10+</p>
               <p className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase mt-3 font-semibold">Clients</p>
             </motion.div>
           </div>
@@ -92,13 +92,13 @@ export function About() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="group relative rounded-[2.5rem] border border-border bg-background/50 p-10 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl overflow-hidden"
+            className="group relative rounded-3xl md:rounded-[2.5rem] border border-border bg-background/50 p-6 md:p-10 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="mb-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary border border-primary/10 transition-transform group-hover:scale-110">
               <Layout className="h-7 w-7" />
             </div>
-            <h3 className="mb-4 text-2xl font-medium tracking-tight">Front-End Engineering</h3>
+            <h3 className="mb-4 text-xl md:text-2xl font-medium tracking-tight">Front-End Engineering</h3>
             <p className="text-base text-muted-foreground/80 leading-relaxed">
               Crafting pixel-perfect, responsive interfaces using React and Next.js with a focus on performance and accessibility.
             </p>
@@ -109,13 +109,13 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="group relative rounded-[2.5rem] border border-border bg-background/50 p-10 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl overflow-hidden"
+            className="group relative rounded-3xl md:rounded-[2.5rem] border border-border bg-background/50 p-6 md:p-10 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:shadow-2xl overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="mb-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/5 text-primary border border-primary/10 transition-transform group-hover:scale-110">
               <Code2 className="h-7 w-7" />
             </div>
-            <h3 className="mb-4 text-2xl font-medium tracking-tight">Technical Architecture</h3>
+            <h3 className="mb-4 text-xl md:text-2xl font-medium tracking-tight">Technical Architecture</h3>
             <p className="text-base text-muted-foreground/80 leading-relaxed">
               Designing scalable systems and state management patterns that ensure long-term maintainability and speed.
             </p>
