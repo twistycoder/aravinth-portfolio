@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+Sitemap: https://aravinth-alpha.vercel.app/sitemap.xml

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Aravinthkumar Devaraj Portfolio",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://aravinth-alpha.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Aravinthkumar Devaraj | Senior React Developer",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aravinthkumar Devaraj | Senior React Developer",
     description: "Portfolio of Aravinthkumar Devaraj, a Senior React Developer specializing in high-performance web applications.",
-    images: ["/og-image.jpg"],
+    images: ["https://aravinth-alpha.vercel.app/og-image.jpg"],
     creator: "@twisty_coder",
   },
   robots: {
