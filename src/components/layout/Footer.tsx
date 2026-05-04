@@ -114,6 +114,16 @@ export function Footer() {
               </Link>
             ))}
           </div>
+
+          <motion.button
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" })}
+            className="flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/50 border border-border/50 text-[10px] font-black tracking-[0.3em] uppercase hover:bg-primary/10 hover:text-primary transition-all group/up"
+          >
+            Back to Top
+            <ArrowUpRight className="h-3 w-3 -rotate-45 group-hover/up:-translate-y-0.5 transition-transform" />
+          </motion.button>
         </div>
       </motion.div>
     </footer>

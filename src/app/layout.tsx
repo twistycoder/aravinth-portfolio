@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -89,6 +90,7 @@ export default function RootLayout({
           <div className="noise" />
           <div className="fixed inset-0 -z-10 grid-pattern opacity-[0.4] dark:opacity-[0.2]" />
           {children}
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
