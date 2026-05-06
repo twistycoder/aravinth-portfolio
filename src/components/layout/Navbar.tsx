@@ -36,7 +36,7 @@ export function Navbar() {
       className={cn(
         "fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300",
         isScrolled
-          ? "top-4 w-[calc(100%-2rem)] max-w-4xl rounded-full bg-background/80 backdrop-blur-md border border-border shadow-md py-2"
+          ? "top-4 w-[calc(100%-2rem)] max-w-5xl rounded-full bg-background/80 backdrop-blur-md border border-border shadow-md py-2"
           : "top-0 w-full bg-transparent py-5 border-b border-transparent"
       )}
     >
