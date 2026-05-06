@@ -76,10 +76,11 @@ function Page({
         opacity,
         transformOrigin: "left center",
         perspective: "2000px",
+        backfaceVisibility: "hidden", // Hide back of page
       }}
       className="absolute inset-0 w-full h-full"
     >
-      <div className="relative w-full h-full rounded-r-3xl border border-border bg-background/95 backdrop-blur-xl p-8 md:p-12 shadow-[10px_0_30px_-10px_rgba(0,0,0,0.1)] flex flex-col justify-between overflow-hidden group">
+      <div className="relative w-full h-full rounded-r-3xl border border-border bg-background p-8 md:p-12 shadow-[10px_0_30px_-10px_rgba(0,0,0,0.1)] flex flex-col justify-between overflow-hidden group">
         {/* Page Texture/Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none" />
         
