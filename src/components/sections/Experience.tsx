@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import { Section } from "@/components/ui/Section";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Briefcase, Calendar, Award, Code2 } from "lucide-react";
 
 const EXPERIENCES = [
   {
@@ -59,98 +60,221 @@ const EXPERIENCES = [
   },
 ];
 
-export function Experience() {
+function ExperienceCard({ exp, index }: { exp: typeof EXPERIENCES[0]; index: number }) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  
+  // Mouse hover effect
+  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <Section id="experience" className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.1]" />
-      
-      <div className="mb-12 md:mb-20 space-y-2 md:space-y-4">
-        <motion.span 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase"
-        >
-          Career Path
-        </motion.span>
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
-        >
-          Work <span className="text-muted-foreground/60 italic">History</span>
-        </motion.h2>
+    <motion.div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="group relative"
+    >
+      {/* Timeline Node */}
+      <div className="absolute -left-[41px] top-10 z-20 md:-left-[41px]">
+        <div className="relative flex items-center justify-center">
+          <motion.div 
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            className="w-4 h-4 rounded-full bg-background border-2 border-primary shadow-[0_0_15px_rgba(var(--primary),0.5)] z-10"
+          />
+          <motion.div 
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute w-8 h-8 rounded-full bg-primary/20"
+          />
+        </div>
       </div>
 
-      <div className="relative space-y-12 md:space-y-16 before:absolute before:inset-0 before:left-0 md:before:left-1/2 before:-translate-x-px before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-        {EXPERIENCES.map((exp, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: idx * 0.1 }}
-            className="relative flex items-start md:odd:flex-row-reverse group"
-          >
-            {/* Dot */}
-            <motion.div 
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              className="absolute left-0 md:left-1/2 top-0 -translate-x-1/2 flex items-center justify-center w-3 h-3 rounded-full border border-primary/20 bg-background z-10 transition-colors group-hover:bg-primary shadow-[0_0_10px_rgba(var(--primary),0.3)]" 
-            />
+      {/* Card Content */}
+      <div className="relative overflow-hidden rounded-[2rem] border border-border bg-background/40 backdrop-blur-xl p-8 md:p-10 transition-all duration-500 hover:border-primary/30 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] group-hover:-translate-y-1">
+        {/* Hover Glow */}
+        <div 
+          className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{
+            background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(var(--primary), 0.05), transparent 40%)`,
+          }}
+        />
 
-            {/* Content Card */}
-            <div className="ml-8 md:ml-0 md:w-[calc(50%-3rem)] p-6 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-border bg-background/50 backdrop-blur-md transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 group-hover:-translate-y-1">
-              <div className="flex flex-col mb-6 md:mb-8 gap-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4">
-                  <span className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase font-semibold">
-                    {exp.period}
-                  </span>
-                  <div className="flex gap-2">
-                    {exp.tech.slice(0, 2).map((t) => (
-                      <span key={t} className="text-[10px] tracking-widest text-primary/60 uppercase bg-primary/5 px-2 py-0.5 rounded-full border border-primary/10">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-medium text-2xl md:text-3xl tracking-tighter mb-1">{exp.role}</h3>
-                  <h4 className="text-sm font-medium text-muted-foreground/60 tracking-wide uppercase">
-                    {exp.company}
-                  </h4>
-                </div>
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-primary/50 text-[10px] uppercase tracking-[0.2em] font-semibold">
+                <Calendar className="w-3 h-3" />
+                {exp.period}
               </div>
+              <h3 className="text-2xl md:text-4xl font-medium tracking-tight group-hover:text-primary transition-colors">
+                {exp.role}
+              </h3>
+              <div className="flex items-center gap-2 text-muted-foreground font-medium">
+                <Briefcase className="w-4 h-4 opacity-50" />
+                {exp.company}
+              </div>
+            </div>
+            
+            <div className="flex flex-wrap gap-2 md:justify-end max-w-[200px]">
+              {exp.tech.slice(0, 3).map((t) => (
+                <span key={t} className="text-[9px] px-2.5 py-1 rounded-full border border-primary/10 bg-primary/5 text-primary/70 uppercase tracking-widest font-medium">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
 
-              {/* Achievement Highlight */}
-              <div className="mb-8 p-4 rounded-2xl bg-primary/5 border border-primary/10">
-                <p className="text-xs font-medium text-primary leading-tight">
-                  <span className="opacity-50 uppercase tracking-widest mr-2">Key Highlight:</span>
+          {/* Achievement Badge */}
+          <div className="relative overflow-hidden rounded-2xl bg-primary/[0.03] border border-primary/5 p-4 md:p-5 group/achievement">
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 p-1.5 rounded-lg bg-primary/10 text-primary">
+                <Award className="w-4 h-4" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-primary/40 font-bold">Key Achievement</span>
+                <p className="text-sm md:text-base text-foreground/80 font-medium leading-relaxed">
                   {exp.achievement}
                 </p>
               </div>
-
-              <ul className="space-y-4 mb-8">
-                {exp.description.map((item, i) => (
-                  <li key={i} className="flex items-start text-sm text-foreground/70 leading-relaxed group/item">
-                    <span className="mr-3 mt-2 h-1 w-1 rounded-full bg-primary/30 shrink-0 group-hover/item:bg-primary transition-colors" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Tech Stack Footer */}
-              <div className="pt-6 border-t border-border/50 flex flex-wrap gap-2">
-                <span className="text-[10px] text-muted-foreground/60 uppercase tracking-widest w-full mb-1">Stack:</span>
-                {exp.tech.map((t) => (
-                  <span key={t} className="text-[10px] font-medium text-muted-foreground/70 px-2 py-1 bg-secondary/30 rounded-md">
-                    {t}
-                  </span>
-                ))}
-              </div>
             </div>
-          </motion.div>
-        ))}
+          </div>
+
+          <ul className="grid gap-4">
+            {exp.description.map((item, i) => (
+              <li key={i} className="flex items-start gap-4 text-sm md:text-base text-muted-foreground leading-relaxed group/item">
+                <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-primary/20 shrink-0 group-hover/item:bg-primary/60 transition-colors" />
+                <span className="group-hover/item:text-foreground transition-colors">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="pt-6 border-t border-border/50 flex flex-wrap gap-3">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground w-full mb-1">
+              <Code2 className="w-3 h-3" />
+              Technology Stack
+            </div>
+            {exp.tech.map((t) => (
+              <span key={t} className="text-[11px] font-medium text-foreground/60 px-3 py-1.5 bg-secondary/50 rounded-lg hover:bg-primary/5 hover:text-primary transition-all cursor-default">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export function Experience() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const pathLength = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  return (
+    <Section id="experience" className="relative py-24 md:py-40" containerClassName="max-w-7xl px-6 md:px-12 lg:px-20">
+      <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.05]" />
+      
+      <div ref={containerRef} className="container relative">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+          {/* Left Column - Sticky Info */}
+          <div className="lg:w-1/3">
+            <div className="lg:sticky lg:top-32 space-y-8">
+              <div className="space-y-4">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="h-[1px] w-8 bg-primary/30" />
+                  <span className="text-xs font-bold tracking-[0.4em] text-primary/40 uppercase">
+                    Career Path
+                  </span>
+                </motion.div>
+                
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  className="text-5xl md:text-7xl font-medium tracking-tight"
+                >
+                  Work <br />
+                  <span className="text-muted-foreground/40 italic font-light">History</span>
+                </motion.h2>
+              </div>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-lg text-muted-foreground leading-relaxed max-w-sm"
+              >
+                A chronicle of my professional journey, focusing on building high-performance 
+                web architectures and intuitive user experiences.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4 }}
+                className="hidden lg:block pt-8"
+              >
+                <div className="p-8 rounded-3xl border border-border bg-secondary/30 backdrop-blur-sm relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Briefcase className="w-16 h-16" />
+                  </div>
+                  <div className="relative z-10 space-y-4">
+                    <h4 className="font-medium text-lg uppercase tracking-wider text-primary/60">Experience Stats</h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <div className="text-3xl font-bold text-primary">8+</div>
+                        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Years Exp</div>
+                      </div>
+                      <div>
+                        <div className="text-3xl font-bold text-primary">15+</div>
+                        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Projects</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right Column - Timeline */}
+          <div className="lg:w-2/3 relative pl-8 md:pl-10">
+            {/* Timeline Line */}
+            <div className="absolute left-0 md:left-0 top-0 bottom-0 w-[2px] bg-border/40 overflow-hidden">
+              <motion.div 
+                style={{ scaleY: pathLength }}
+                className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-primary via-primary/50 to-transparent origin-top"
+              />
+            </div>
+
+            <div className="space-y-20 md:space-y-32">
+              {EXPERIENCES.map((exp, idx) => (
+                <ExperienceCard key={idx} exp={exp} index={idx} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </Section>
   );
