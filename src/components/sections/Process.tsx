@@ -2,136 +2,213 @@
 
 import * as React from "react";
 import { Section } from "@/components/ui/Section";
-import { motion, useScroll, useSpring } from "framer-motion";
-import { Search, PenTool, Code2, Zap, ArrowRight } from "lucide-react";
+import { motion, useScroll, useSpring, useTransform, MotionValue } from "framer-motion";
+import { 
+  CheckCircle2, 
+  Compass,
+  Code2, 
+  Zap, 
+  LayoutTemplate,
+  ShieldCheck,
+  ChevronRight,
+  BookOpen
+} from "lucide-react";
 
 const STEPS = [
   {
     title: "Discovery",
     description: "Deep-diving into business goals, user needs, and technical requirements to build a solid foundation.",
-    icon: <Search className="w-6 h-6" />,
-    color: "bg-blue-500",
-    glow: "shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+    icon: Compass,
+    deliverables: ["Product Roadmap", "Technical Audit", "User Personas"],
   },
   {
-    title: "Design",
+    title: "Architecture",
     description: "Architecting the UI/UX with a focus on design systems, accessibility, and high-conversion flows.",
-    icon: <PenTool className="w-6 h-6" />,
-    color: "bg-purple-500",
-    glow: "shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+    icon: LayoutTemplate,
+    deliverables: ["System Design", "UI Kit", "Wireframes"],
   },
   {
     title: "Engineering",
     description: "Building scalable, high-performance applications using modern React/Next.js best practices.",
-    icon: <Code2 className="w-6 h-6" />,
-    color: "bg-primary",
-    glow: "shadow-[0_0_20px_rgba(var(--primary),0.5)]"
+    icon: Code2,
+    deliverables: ["Clean Code", "API Integration", "Unit Tests"],
   },
   {
     title: "Optimization",
     description: "Performance tuning, SEO engineering, and ensuring 99+ Lighthouse scores across all metrics.",
-    icon: <Zap className="w-6 h-6" />,
-    color: "bg-amber-500",
-    glow: "shadow-[0_0_20px_rgba(245,158,11,0.5)]"
+    icon: Zap,
+    deliverables: ["Lighthouse 100", "SEO Setup", "Speed Audit"],
   }
 ];
+
+function Page({ 
+  step, 
+  index, 
+  progress 
+}: { 
+  step: typeof STEPS[0]; 
+  index: number; 
+  progress: MotionValue<number>;
+}) {
+  // Map scroll progress to a specific range for this page
+  // Each page flips in a 0.2 segment of the 0-1 range
+  const start = index * 0.2;
+  const end = (index + 1) * 0.2;
+  
+  // Rotation from 0 to -180 degrees
+  const rotateY = useTransform(progress, [start, end], [0, -180], { clamp: true });
+  
+  // Opacity fade as it turns (simulating shadow and turning away)
+  const opacity = useTransform(progress, [start, end - 0.05, end], [1, 1, 0], { clamp: true });
+  
+  // Z-index management: pages that haven't turned yet stay on top in reverse order
+  const zIndex = useTransform(progress, (p) => {
+    if (p < start) return STEPS.length - index;
+    if (p > end) return index;
+    return STEPS.length + 1; // Turning page is on top
+  });
+
+  return (
+    <motion.div
+      style={{ 
+        rotateY,
+        zIndex,
+        opacity,
+        transformOrigin: "left center",
+        perspective: "2000px",
+      }}
+      className="absolute inset-0 w-full h-full"
+    >
+      <div className="relative w-full h-full rounded-r-3xl border border-border bg-background/95 backdrop-blur-xl p-8 md:p-12 shadow-[10px_0_30px_-10px_rgba(0,0,0,0.1)] flex flex-col justify-between overflow-hidden group">
+        {/* Page Texture/Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none" />
+        
+        {/* Page Number */}
+        <div className="absolute top-8 right-8 text-6xl font-black text-foreground/[0.03]">
+          0{index + 1}
+        </div>
+
+        <div className="space-y-8 relative z-10">
+          <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/5 text-primary border border-primary/10 transition-transform group-hover:scale-110">
+            <step.icon className="h-8 w-8" />
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-3xl md:text-5xl font-medium tracking-tight">
+              {step.title}
+            </h3>
+            <p className="text-muted-foreground/80 leading-relaxed text-base md:text-lg max-w-md">
+              {step.description}
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-6 relative z-10">
+          <div className="pt-8 border-t border-border/50">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-4">
+              <ShieldCheck className="w-3 h-3" />
+              Technical Deliverables
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {step.deliverables.map((d) => (
+                <div key={d} className="flex items-center gap-2 text-sm text-foreground/70 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-primary/40" />
+                  {d}
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-2 text-xs font-bold text-primary/60 uppercase tracking-widest">
+            Turn to next step <ChevronRight className="w-3 h-3" />
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export function Process() {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end end"]
-  });
-
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
+    offset: ["start start", "end end"]
   });
 
   return (
-    <Section id="process" className="relative overflow-hidden bg-secondary/5">
-      <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.05]" />
-      
-      <div className="mb-16 md:mb-24 space-y-4 text-center md:text-left">
-        <motion.span 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-[10px] tracking-[0.4em] text-muted-foreground uppercase block"
-        >
-          Workflow
-        </motion.span>
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl font-medium tracking-tighter sm:text-6xl md:text-7xl"
-        >
-          My <span className="text-muted-foreground/60 italic">Process</span>
-        </motion.h2>
-      </div>
-
-      <div ref={containerRef} className="relative max-w-5xl mx-auto px-4 md:px-0">
-        {/* The Path Line */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border/50 -translate-x-px md:-translate-x-1/2">
-          <motion.div 
-            style={{ scaleY }}
-            className="absolute inset-0 bg-gradient-to-b from-primary via-purple-500 to-blue-500 origin-top"
-          />
-        </div>
-
-        <div className="space-y-12 md:space-y-0">
-          {STEPS.map((step, idx) => (
-            <div key={idx} className="relative">
-              <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-0 ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                
-                {/* Content Card */}
-                <motion.div 
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
-                  className={`w-full md:w-[45%] pl-12 md:pl-0 ${idx % 2 === 0 ? "md:text-right" : "md:text-left"}`}
-                >
-                  <div className="group relative p-8 rounded-3xl border border-border bg-background/50 backdrop-blur-md transition-all duration-500 hover:border-primary/20 hover:shadow-2xl overflow-hidden">
-                    <div className="absolute top-4 right-4 text-6xl font-black text-foreground/[0.03] transition-colors group-hover:text-primary/[0.05]">
-                      0{idx + 1}
-                    </div>
-                    
-                    <h3 className="text-2xl font-semibold tracking-tight mb-3 flex items-center gap-3 md:justify-end">
-                      {idx % 2 !== 0 && <step.icon.type {...step.icon.props} className="w-5 h-5 text-primary md:hidden" />}
-                      {step.title}
-                      {idx % 2 === 0 && <step.icon.type {...step.icon.props} className="w-5 h-5 text-primary md:hidden" />}
-                    </h3>
-                    <p className="text-muted-foreground/80 leading-relaxed text-sm md:text-base">
-                      {step.description}
-                    </p>
-                    
-                    <div className={`mt-6 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-primary/60 ${idx % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
-                      View Details <ArrowRight className="w-3 h-3" />
-                    </div>
-                  </div>
+    <Section id="process" className="relative p-0" containerClassName="max-w-none px-0">
+      {/* Scroll Container for sticky effect */}
+      <div ref={containerRef} className="relative h-[400vh]">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden bg-secondary/5 py-20 px-6 md:px-20">
+          <div className="absolute inset-0 -z-10 grid-pattern opacity-[0.05]" />
+          
+          <div className="w-full max-w-7xl h-full flex flex-col lg:flex-row gap-16 items-center">
+            {/* Left side: Static Intro */}
+            <div className="lg:w-1/3 space-y-8">
+              <div className="space-y-4">
+                <motion.div className="flex items-center gap-3">
+                  <div className="h-[1px] w-8 bg-primary/30" />
+                  <span className="text-xs font-bold tracking-[0.4em] text-primary/40 uppercase">
+                    Workflow
+                  </span>
                 </motion.div>
-
-                {/* Center Marker */}
-                <div className="absolute left-4 md:left-1/2 top-0 -translate-x-1/2 flex items-center justify-center">
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    className={`relative z-10 w-8 h-8 rounded-full bg-background border-2 border-border flex items-center justify-center ${step.glow} transition-colors duration-500`}
-                  >
-                    <div className={`w-3 h-3 rounded-full ${step.color}`} />
-                  </motion.div>
-                </div>
-
-                {/* Empty Side for Desktop */}
-                <div className="hidden md:block md:w-[45%]" />
+                
+                <h2 className="text-5xl md:text-8xl font-medium tracking-tight">
+                  The <br />
+                  <span className="text-muted-foreground/30 italic font-light">Playbook</span>
+                </h2>
               </div>
 
-              {/* Spacing for Desktop Timeline */}
-              <div className="hidden md:block h-32" />
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-sm">
+                Scroll to flip through my engineering-first methodology. A transparent look into 
+                how I build high-performance digital products.
+              </p>
+
+              <div className="flex items-center gap-4 pt-8">
+                <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10">
+                  <BookOpen className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold uppercase tracking-widest text-primary">Interactive</div>
+                  <div className="text-xs text-muted-foreground">Flippable Process Map</div>
+                </div>
+              </div>
             </div>
-          ))}
+
+            {/* Right side: The Book */}
+            <div className="lg:w-2/3 relative h-[60vh] md:h-[70vh] w-full max-w-2xl lg:max-w-none lg:aspect-[4/3]">
+              {/* Book Spine/Base */}
+              <div className="absolute left-0 top-0 bottom-0 w-2 bg-primary/20 rounded-l-full z-0 shadow-[2px_0_10px_rgba(0,0,0,0.1)]" />
+              
+              {/* Pages Container */}
+              <div className="relative w-full h-full pl-2">
+                {STEPS.map((step, idx) => (
+                  <Page 
+                    key={idx} 
+                    step={step} 
+                    index={idx} 
+                    progress={scrollYProgress} 
+                  />
+                ))}
+                
+                {/* Last "Back Page" or Completion State */}
+                <div className="absolute inset-0 w-full h-full rounded-r-3xl bg-secondary/30 border border-border flex items-center justify-center -z-10 p-12 text-center">
+                  <div className="space-y-6">
+                    <div className="w-20 h-20 rounded-full bg-primary/5 border border-primary/10 flex items-center justify-center mx-auto">
+                      <ShieldCheck className="w-10 h-10 text-primary/40" />
+                    </div>
+                    <h4 className="text-2xl font-medium">End of Playbook</h4>
+                    <p className="text-sm text-muted-foreground max-w-xs">
+                      Ready to start your project with this proven engineering-first methodology?
+                    </p>
+                    <button className="px-6 py-3 rounded-xl bg-primary text-background text-sm font-bold tracking-tight">
+                      Initiate Project
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Section>
